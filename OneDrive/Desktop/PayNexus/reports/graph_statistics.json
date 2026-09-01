@@ -1,0 +1,62 @@
+{
+  "heterogeneous_graph": {
+    "num_nodes": 4250,
+    "num_edges": 15189,
+    "nodes_by_type": {
+      "merchant": 500,
+      "customer_id": 1500,
+      "device_id": 750,
+      "ip_id": 750,
+      "settlement_account_id": 750
+    },
+    "edges_by_relationship": {
+      "merchant_customer_id": 7733,
+      "merchant_device_id": 3637,
+      "merchant_ip_id": 3325,
+      "merchant_settlement_account": 494
+    },
+    "connected_components_count": 471,
+    "largest_components_sizes": [
+      3780,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "merchant_degree_statistics": {
+      "min": 0,
+      "max": 226,
+      "mean": 30.38,
+      "median": 22.0,
+      "std": 28.78
+    }
+  },
+  "projected_merchant_graph": {
+    "num_merchants": 500,
+    "num_edges": 27100,
+    "density": 0.21723,
+    "connected_components_count": 7,
+    "largest_components_sizes": [
+      494,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "isolated_merchants": 6,
+    "merchant_degree_statistics": {
+      "min": 0,
+      "max": 381,
+      "mean": 108.4,
+      "median": 96.0,
+      "std": 69.81
+    }
+  }
+}

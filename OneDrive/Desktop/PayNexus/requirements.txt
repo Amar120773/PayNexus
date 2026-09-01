@@ -1,0 +1,12 @@
+pandas
+numpy
+Faker
+networkx
+scikit-learn
+scipy
+fastapi
+uvicorn[standard]
+pydantic
+pytest
+xgboost
+shap

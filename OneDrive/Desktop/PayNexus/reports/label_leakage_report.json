@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "merchants_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "customers_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "devices_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "ips_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "settlement_accounts_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "transactions_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "settlements_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "refunds_forbidden_columns",
+      "status": "PASS",
+      "evidence": "No forbidden label columns found",
+      "recommendation": ""
+    },
+    {
+      "check": "merchant_id_numeric_suffix",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.5201",
+      "recommendation": ""
+    },
+    {
+      "check": "merchant_age_days",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.4895",
+      "recommendation": ""
+    },
+    {
+      "check": "tx_count",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.7028",
+      "recommendation": ""
+    },
+    {
+      "check": "mean_amount",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.4990",
+      "recommendation": ""
+    },
+    {
+      "check": "failed_rate",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.5786",
+      "recommendation": ""
+    },
+    {
+      "check": "refunded_rate",
+      "status": "PASS",
+      "evidence": "single-feature AUC=0.5909",
+      "recommendation": ""
+    },
+    {
+      "check": "category=SaaS",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0867; mule_rate=0.1000",
+      "recommendation": ""
+    },
+    {
+      "check": "category=ecommerce",
+      "status": "PASS",
+      "evidence": "legit_rate=0.1867; mule_rate=0.1800",
+      "recommendation": ""
+    },
+    {
+      "check": "category=education",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0867; mule_rate=0.0800",
+      "recommendation": ""
+    },
+    {
+      "check": "category=electronics",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0756; mule_rate=0.0200",
+      "recommendation": ""
+    },
+    {
+      "check": "category=fashion",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0933; mule_rate=0.1000",
+      "recommendation": ""
+    },
+    {
+      "check": "category=grocery",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0844; mule_rate=0.1000",
+      "recommendation": ""
+    },
+    {
+      "check": "category=healthcare",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0778; mule_rate=0.1000",
+      "recommendation": ""
+    },
+    {
+      "check": "category=restaurant",
+      "status": "PASS",
+      "evidence": "legit_rate=0.1200; mule_rate=0.1400",
+      "recommendation": ""
+    },
+    {
+      "check": "category=services",
+      "status": "PASS",
+      "evidence": "legit_rate=0.1067; mule_rate=0.1000",
+      "recommendation": ""
+    },
+    {
+      "check": "category=travel",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0822; mule_rate=0.0800",
+      "recommendation": ""
+    },
+    {
+      "check": "kyc_status=LIMITED",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0600; mule_rate=0.0600",
+      "recommendation": ""
+    },
+    {
+      "check": "kyc_status=PENDING",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0844; mule_rate=0.0400",
+      "recommendation": ""
+    },
+    {
+      "check": "kyc_status=VERIFIED",
+      "status": "PASS",
+      "evidence": "legit_rate=0.8556; mule_rate=0.9000",
+      "recommendation": ""
+    },
+    {
+      "check": "payment_method=UPI",
+      "status": "PASS",
+      "evidence": "legit_rate=0.4173; mule_rate=0.4563",
+      "recommendation": ""
+    },
+    {
+      "check": "payment_method=card",
+      "status": "PASS",
+      "evidence": "legit_rate=0.3331; mule_rate=0.3161",
+      "recommendation": ""
+    },
+    {
+      "check": "payment_method=netbanking",
+      "status": "PASS",
+      "evidence": "legit_rate=0.1282; mule_rate=0.1004",
+      "recommendation": ""
+    },
+    {
+      "check": "payment_method=wallet",
+      "status": "PASS",
+      "evidence": "legit_rate=0.1214; mule_rate=0.1272",
+      "recommendation": ""
+    },
+    {
+      "check": "status=FAILED",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0592; mule_rate=0.0648",
+      "recommendation": ""
+    },
+    {
+      "check": "status=REFUNDED",
+      "status": "PASS",
+      "evidence": "legit_rate=0.0344; mule_rate=0.0333",
+      "recommendation": ""
+    },
+    {
+      "check": "status=SUCCESS",
+      "status": "PASS",
+      "evidence": "legit_rate=0.9065; mule_rate=0.9020",
+      "recommendation": ""
+    }
+  ]
+}

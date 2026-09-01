@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "seed_plus_one": 43,
+  "same_seed": [
+    {
+      "table": "merchants",
+      "identical": true,
+      "hash_a": "8ddff526a90994a271f4a66e35191e926f1da04f01255005e0ee21e3e2646228",
+      "hash_b": "8ddff526a90994a271f4a66e35191e926f1da04f01255005e0ee21e3e2646228",
+      "row_count_a": 500,
+      "row_count_b": 500
+    },
+    {
+      "table": "customers",
+      "identical": true,
+      "hash_a": "227a9185af99a4e2f02e1935f99d2173096c5480fb0e4f6663d6b9fafc1b1b87",
+      "hash_b": "227a9185af99a4e2f02e1935f99d2173096c5480fb0e4f6663d6b9fafc1b1b87",
+      "row_count_a": 1500,
+      "row_count_b": 1500
+    },
+    {
+      "table": "devices",
+      "identical": true,
+      "hash_a": "ac7c6cfd0653ddede8b850c14e4481c474371d1b0d707fb7b2a1da62e52f8783",
+      "hash_b": "ac7c6cfd0653ddede8b850c14e4481c474371d1b0d707fb7b2a1da62e52f8783",
+      "row_count_a": 750,
+      "row_count_b": 750
+    },
+    {
+      "table": "ips",
+      "identical": true,
+      "hash_a": "b5d576afe00aa9800907b6e793482a4d6ebb3973f0bc31c618545b0aa47bd79a",
+      "hash_b": "b5d576afe00aa9800907b6e793482a4d6ebb3973f0bc31c618545b0aa47bd79a",
+      "row_count_a": 750,
+      "row_count_b": 750
+    },
+    {
+      "table": "settlement_accounts",
+      "identical": true,
+      "hash_a": "89f5e28454ac9fbff45a11ea0493dde3e0cd5f7eb6e0d16340750b086fd31eec",
+      "hash_b": "89f5e28454ac9fbff45a11ea0493dde3e0cd5f7eb6e0d16340750b086fd31eec",
+      "row_count_a": 750,
+      "row_count_b": 750
+    },
+    {
+      "table": "transactions",
+      "identical": true,
+      "hash_a": "2c84e8cc2a660a8205b96783f564d23fbf0428c46c1486be9bfdd41c26c5a57a",
+      "hash_b": "2c84e8cc2a660a8205b96783f564d23fbf0428c46c1486be9bfdd41c26c5a57a",
+      "row_count_a": 10000,
+      "row_count_b": 10000
+    },
+    {
+      "table": "settlements",
+      "identical": true,
+      "hash_a": "04f349212d62a5650aa2edf81f0d549e8c44c8f5a5479b94fd11df6c5698f0a3",
+      "hash_b": "04f349212d62a5650aa2edf81f0d549e8c44c8f5a5479b94fd11df6c5698f0a3",
+      "row_count_a": 5213,
+      "row_count_b": 5213
+    },
+    {
+      "table": "refunds",
+      "identical": true,
+      "hash_a": "70d936445330c0fd8eef923cc4d96083b6f72e3eaf4d6acd6d073d39c6f8f2a6",
+      "hash_b": "70d936445330c0fd8eef923cc4d96083b6f72e3eaf4d6acd6d073d39c6f8f2a6",
+      "row_count_a": 342,
+      "row_count_b": 342
+    },
+    {
+      "table": "merchant_labels",
+      "identical": true,
+      "hash_a": "45e84515aebb5a255eed00678060d27257cf920e0ecf0a452c88e8600a778d33",
+      "hash_b": "45e84515aebb5a255eed00678060d27257cf920e0ecf0a452c88e8600a778d33",
+      "row_count_a": 500,
+      "row_count_b": 500
+    },
+    {
+      "table": "mule_networks",
+      "identical": true,
+      "hash_a": "a7d1e6311c76351549a46e8de591a886ad1bc75a7ab634c5f710d3533667cdf5",
+      "hash_b": "a7d1e6311c76351549a46e8de591a886ad1bc75a7ab634c5f710d3533667cdf5",
+      "row_count_a": 10,
+      "row_count_b": 10
+    }
+  ],
+  "different_seed": [
+    {
+      "table": "merchants",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 500,
+      "row_count_seed_plus_one": 500,
+      "hash_a": "8ddff526a90994a271f4a66e35191e926f1da04f01255005e0ee21e3e2646228",
+      "hash_seed_plus_one": "5c58d821b2de5f1f26a060253a23f8eb4645f79d09b6b3b01fd3ff738e3139d9"
+    },
+    {
+      "table": "customers",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 1500,
+      "row_count_seed_plus_one": 1500,
+      "hash_a": "227a9185af99a4e2f02e1935f99d2173096c5480fb0e4f6663d6b9fafc1b1b87",
+      "hash_seed_plus_one": "2410c5bd1151fedb5079876122e521263d20c5e27ecf1cffd9ead76b515ba6c1"
+    },
+    {
+      "table": "devices",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 750,
+      "row_count_seed_plus_one": 750,
+      "hash_a": "ac7c6cfd0653ddede8b850c14e4481c474371d1b0d707fb7b2a1da62e52f8783",
+      "hash_seed_plus_one": "aadb248b801aea9a6df4c0c83dac4bcf60046914ed93670107a4e6819ebc05eb"
+    },
+    {
+      "table": "ips",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 750,
+      "row_count_seed_plus_one": 750,
+      "hash_a": "b5d576afe00aa9800907b6e793482a4d6ebb3973f0bc31c618545b0aa47bd79a",
+      "hash_seed_plus_one": "f53eff9da5ed463c29fdff2c5f83ba9495607ab094b76dfd5461c3580cc8cd55"
+    },
+    {
+      "table": "settlement_accounts",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 750,
+      "row_count_seed_plus_one": 750,
+      "hash_a": "89f5e28454ac9fbff45a11ea0493dde3e0cd5f7eb6e0d16340750b086fd31eec",
+      "hash_seed_plus_one": "d36d24b8984e14cc6dc964f41f8b13e5bc0d1030b9f5c7eeb03cc22c52826ebd"
+    },
+    {
+      "table": "transactions",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 10000,
+      "row_count_seed_plus_one": 10000,
+      "hash_a": "2c84e8cc2a660a8205b96783f564d23fbf0428c46c1486be9bfdd41c26c5a57a",
+      "hash_seed_plus_one": "0c2c0aac83f85862ef9ec4a8483e1ff508178ccb65ab5f1a9fafdd508d3f9f2e"
+    },
+    {
+      "table": "settlements",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 5213,
+      "row_count_seed_plus_one": 5377,
+      "hash_a": "04f349212d62a5650aa2edf81f0d549e8c44c8f5a5479b94fd11df6c5698f0a3",
+      "hash_seed_plus_one": "958f4ea8c56fbf7ee02fe9a6772fba5d1427c70d16be5b4221cffdfe1c888383"
+    },
+    {
+      "table": "refunds",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 342,
+      "row_count_seed_plus_one": 351,
+      "hash_a": "70d936445330c0fd8eef923cc4d96083b6f72e3eaf4d6acd6d073d39c6f8f2a6",
+      "hash_seed_plus_one": "4ab73efa964f4ea6ea6c7b17eb04682316db24e8b5d4c9532f5cec38254ad66c"
+    },
+    {
+      "table": "merchant_labels",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 500,
+      "row_count_seed_plus_one": 500,
+      "hash_a": "45e84515aebb5a255eed00678060d27257cf920e0ecf0a452c88e8600a778d33",
+      "hash_seed_plus_one": "9f51fdad6749a90d015e95af26331394a5a3a5251a9171deb3644d3e6c53ee35"
+    },
+    {
+      "table": "mule_networks",
+      "changed_with_seed_plus_one": true,
+      "schema_identical": true,
+      "row_count_a": 10,
+      "row_count_seed_plus_one": 10,
+      "hash_a": "a7d1e6311c76351549a46e8de591a886ad1bc75a7ab634c5f710d3533667cdf5",
+      "hash_seed_plus_one": "2a93011ce7c14bb36e83e307c53512bcc230cc53a31e08113d5431816312f454"
+    }
+  ]
+}

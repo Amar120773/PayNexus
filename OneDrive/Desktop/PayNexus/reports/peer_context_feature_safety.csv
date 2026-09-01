@@ -1,0 +1,8 @@
+feature,information_source,available_at_inference,leakage_risk,justification
+peer_group_id,transaction_logs,True,Low,Computed via connected components on the graph constrained strictly to the split-specific merchant subset.
+transaction_count_zscore_vs_peers,transaction_logs,True,Low,Peer group mean and std are calculated purely using merchants within the valid split.
+total_transaction_volume_zscore_vs_peers,transaction_logs,True,Low,Uses split-specific peer group baselines.
+average_transaction_amount_zscore_vs_peers,transaction_logs,True,Low,Uses split-specific peer group baselines.
+refund_rate_zscore_vs_peers,transaction_logs,True,Low,Uses split-specific peer group baselines.
+failure_rate_zscore_vs_peers,transaction_logs,True,Low,Uses split-specific peer group baselines.
+unique_customer_count_zscore_vs_peers,transaction_logs,True,Low,Uses split-specific peer group baselines.
