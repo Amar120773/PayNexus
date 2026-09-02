@@ -43,7 +43,7 @@ It captures this through:
 
 ## 4. System Architecture
 
-![MuleHunter Architecture](ARCHITECTURE/System%20Architecture.png)
+![MuleHunter Architecture](ARCHITECTURE/System_Architecture.jpg)
 
 ---
 
