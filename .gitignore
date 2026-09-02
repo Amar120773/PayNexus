@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node/Next.js
+node_modules/
+.next/
+out/
+build/
+.npm
+*.log
+
+# Editor/OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ensure artifacts are NOT ignored
+!artifacts/
+!artifacts/model.pkl
+!artifacts/model_metadata.json
+!artifacts/threshold.json
+!artifacts/blind_spot_report.json
+
+# Exclude generated data that shouldn't be tracked (unless needed for demo)
+# The prompt didn't say to ignore data/ so I will leave data/ un-ignored or tracked as is.
+
+# Reports and Scratch files
+reports/
+scratch_*.py

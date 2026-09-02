@@ -1,0 +1,14 @@
+pandas
+numpy
+Faker
+networkx
+scikit-learn
+scipy
+fastapi
+uvicorn[standard]
+pydantic
+pytest
+xgboost
+shap
+
+neo4j>=5.14.0
