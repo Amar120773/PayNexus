@@ -1,0 +1,23 @@
+{
+    "model_version": "v2_evolution",
+    "feature_version": "1.0",
+    "training_dataset_version": "v2",
+    "random_seed": 42,
+    "training_split": 3499,
+    "validation_split": 751,
+    "test_split": 750,
+    "feature_list": [
+        "volume_delta_t1_t2",
+        "volume_delta_t2_t3",
+        "refund_delta_t1_t2",
+        "refund_delta_t2_t3",
+        "network_growth_t1_t2",
+        "network_growth_t2_t3",
+        "device_churn_t1_t2",
+        "device_churn_t2_t3",
+        "ip_churn_t1_t2",
+        "ip_churn_t2_t3"
+    ],
+    "threshold": 0.3263078033924103,
+    "training_timestamp": "2026-08-27T07:39:34.262400"
+}
