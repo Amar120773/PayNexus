@@ -1,2 +1,0 @@
-"""MuleHunter source package."""
-
