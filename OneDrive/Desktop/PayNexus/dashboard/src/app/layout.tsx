@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Newsreader, JetBrains_Mono } from "next/font/google";
+import { Inter, Newsreader, JetBrains_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", style: ["normal", "italic"] });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["500", "600", "800"], variable: "--font-poppins" });
 
 export const metadata: Metadata = {
   title: "PayNexus | Merchant Risk Intelligence",
@@ -18,7 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${jetbrains.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                let theme = localStorage.getItem('theme');
+                if (!theme) {
+                  theme = 'light';
+                }
+                document.documentElement.setAttribute('data-theme', theme);
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         style={{
           display: "flex",

@@ -4,17 +4,28 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkHealth } from "@/lib/api";
-import { Activity } from "lucide-react";
+import { Activity, Sun, Moon } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
   const [apiStatus, setApiStatus] = useState<"checking" | "online" | "offline">("checking");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     checkHealth()
       .then(() => setApiStatus("online"))
       .catch(() => setApiStatus("offline"));
+
+    const currentTheme = document.documentElement.getAttribute("data-theme") as "light" | "dark" || "light";
+    setTheme(currentTheme);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -37,7 +48,7 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "16px 24px",
-          background: "rgba(255, 255, 255, 0.9)",
+          background: "var(--bg-surface)",
           backdropFilter: "blur(12px)",
           borderRadius: "var(--radius-lg)",
           boxShadow: "var(--shadow-hard)",
@@ -58,7 +69,7 @@ export default function Header() {
               boxShadow: "var(--shadow-hard-accent)",
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-inverse)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />
               <path d="M2 17l10 5 10-5" />
               <path d="M2 12l10 5 10-5" />
@@ -74,14 +85,32 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Right: Authenticated Profile */}
+        {/* Right: Authenticated Profile & Theme */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+          <button 
+            onClick={toggleTheme}
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "var(--text-secondary)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 8,
+              borderRadius: "50%",
+            }}
+            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+          
+          <div className="hide-on-mobile" style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", paddingLeft: 8, borderLeft: "1px solid var(--border-subtle)" }}>
             <span className="font-ui" style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)" }}>
-              Investigator Console
+              Admin Console
             </span>
             <span className="font-ui" style={{ fontSize: 11, fontWeight: 500, color: "var(--text-muted)" }}>
-              Global Risk Team
+              Buildathon Demo
             </span>
           </div>
           <div 
@@ -100,7 +129,7 @@ export default function Header() {
               boxShadow: "var(--shadow-xs)"
             }}
           >
-            JD
+            AG
           </div>
         </div>
       </div>

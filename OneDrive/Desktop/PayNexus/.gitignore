@@ -60,3 +60,7 @@ Thumbs.db
 
 # Exclude generated data that shouldn't be tracked (unless needed for demo)
 # The prompt didn't say to ignore data/ so I will leave data/ un-ignored or tracked as is.
+
+# Reports and Scratch files
+reports/
+scratch_*.py

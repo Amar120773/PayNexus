@@ -1,6 +1,0 @@
-model,feature_count,precision,recall,f1,roc_auc,pr_auc,false_positive_rate,network_detection_recall,merchants_detected_per_network_pct
-Model A: Behavior Only (Baseline),32,0.029,0.4,0.0541,0.6095,0.0408,0.3526,1.0,40.0
-Model B: Behavior + Raw Network,44,0.0348,0.8,0.0667,0.6653,0.0677,0.5842,1.0,80.0
-Model C: Behavior + Rarity,37,0.0238,0.4,0.0449,0.5853,0.061,0.4316,1.0,40.0
-Model D: Behavior + Coordination,36,0.022,0.4,0.0417,0.5316,0.031,0.4684,1.0,40.0
-Model E: Behavior + Network + Coordination,63,0.0286,0.6,0.0545,0.6084,0.0551,0.5368,1.0,60.0

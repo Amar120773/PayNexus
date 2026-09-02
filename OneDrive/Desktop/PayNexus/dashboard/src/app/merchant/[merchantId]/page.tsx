@@ -93,7 +93,7 @@ function InvestigationError({ error }: { error: string }) {
   return (
     <div style={{ maxWidth: 800, margin: "100px auto", padding: "0 32px" }}>
       <div style={{ borderLeft: "4px solid var(--danger)", paddingLeft: 24 }}>
-        <h2 className="font-display" style={{ fontSize: 32, fontWeight: 500, color: "var(--text-primary)", marginBottom: 16 }}>
+        <h2 className="font-poppins-main" style={{ fontSize: 32, color: "var(--text-primary)", marginBottom: 16 }}>
           RISK INTELLIGENCE UNAVAILABLE
         </h2>
         <p className="font-ui" style={{ fontSize: 16, color: "var(--text-secondary)", marginBottom: 32, maxWidth: 500 }}>
@@ -214,8 +214,7 @@ function SmartFeatureRow({
               className="magnitude-bar-fill"
               style={{
                 width: `${Math.min(100, Math.abs(shap_value) * 50)}%`, // Scale SHAP for visual impact
-                background: isIncrease ? "var(--risk-high-bg)" : "var(--risk-low-bg)",
-                border: `1px solid ${isIncrease ? "var(--risk-high-border)" : "var(--risk-low-border)"}`
+                background: isIncrease ? "var(--risk-high)" : "var(--risk-low)"
               }}
             />
           </div>
@@ -317,20 +316,11 @@ export default function MerchantInvestigationPage({
     async function loadInitial() {
       try {
         setLoading(true);
-        const timelineTimestamps = [
-          "2026-01-31 00:00:00",
-          "2026-02-15 00:00:00",
-          "2026-02-28 00:00:00",
-          "2026-03-15 00:00:00",
-          "2026-03-31 00:00:00",
-        ];
-        const [mMeta, mTimeline, modelM] = await Promise.all([
+        const [mMeta, modelM] = await Promise.all([
           getMerchantMetadata(merchantId),
-          getMerchantTimeline(merchantId, timelineTimestamps),
           getModelMetadata(),
         ]);
         setMetadata(mMeta);
-        setTimeline(mTimeline);
         setModelMeta(modelM);
       } catch (err: any) {
         setError(err.message || "An unexpected error occurred.");
@@ -339,6 +329,24 @@ export default function MerchantInvestigationPage({
       }
     }
     loadInitial();
+    
+    // Fetch timeline independently in the background so it doesn't block
+    async function fetchTimeline() {
+      try {
+        const timelineTimestamps = [
+          "2026-01-31 00:00:00",
+          "2026-02-15 00:00:00",
+          "2026-02-28 00:00:00",
+          "2026-03-15 00:00:00",
+          "2026-03-31 00:00:00",
+        ];
+        const mTimeline = await getMerchantTimeline(merchantId, timelineTimestamps);
+        setTimeline(mTimeline);
+      } catch (err) {
+        console.error("Timeline failed to load", err);
+      }
+    }
+    fetchTimeline();
   }, [merchantId]);
 
   /* Point-in-Time */
@@ -426,7 +434,7 @@ export default function MerchantInvestigationPage({
         </div>
         <div style={{ display: "flex", gap: 6, alignItems: "center", color: "var(--text-muted)" }}>
           <Shield size={12} />
-          <span className="font-data" style={{ fontSize: 10, letterSpacing: "0.1em" }}>MODEL V2 / FROZEN</span>
+          <span className="font-data" style={{ fontSize: 10, letterSpacing: "0.1em" }}>MODEL V2</span>
         </div>
         <div style={{ display: "flex", gap: 6, alignItems: "center", color: "var(--text-muted)" }}>
           <Database size={12} />
@@ -445,7 +453,7 @@ export default function MerchantInvestigationPage({
           <span className="font-data" style={{ fontSize: 13, color: "var(--text-primary)", fontWeight: 700, padding: "2px 8px", background: "var(--bg-elevated)", border: "1px solid var(--border-default)", borderRadius: "var(--radius-sm)" }}>{merchantId}</span>
         </div>
         
-        <h1 className="font-display" style={{ fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 500, color: "var(--text-primary)", margin: "0 0 24px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+        <h1 className="font-poppins-main" style={{ fontSize: "clamp(40px, 6vw, 64px)", color: "var(--text-primary)", margin: "0 0 24px", lineHeight: 1.1 }}>
           {metadata.merchant_name || merchantId}
         </h1>
         
@@ -562,7 +570,7 @@ export default function MerchantInvestigationPage({
               <div className="font-data" style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.1em", marginBottom: 24 }}>
                 EVIDENCE
               </div>
-              <h2 className="font-display" style={{ fontSize: 24, fontWeight: 500, color: "var(--text-primary)", marginBottom: 32 }}>
+              <h2 className="font-poppins-sub" style={{ fontSize: 24, color: "var(--text-primary)", marginBottom: 32 }}>
                 Why this merchant?
               </h2>
               
@@ -610,7 +618,7 @@ export default function MerchantInvestigationPage({
               <div className="font-data" style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.1em", marginBottom: 12 }}>
                 MODEL EXPLANATION
               </div>
-              <h2 className="font-display" style={{ fontSize: 32, fontWeight: 500, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>
+              <h2 className="font-poppins-sub" style={{ fontSize: 32, color: "var(--text-primary)", marginBottom: 8 }}>
                 Why this merchant?
               </h2>
               <p className="font-ui" style={{ fontSize: 15, color: "var(--text-secondary)", marginBottom: 24, maxWidth: 800 }}>
@@ -677,7 +685,7 @@ export default function MerchantInvestigationPage({
                       {increasingFactors.length > 0 && (
                         <div>
                           <div style={{ marginBottom: 16 }}>
-                            <h3 className="font-display" style={{ fontSize: 18, fontWeight: 500, color: "var(--text-primary)", marginBottom: 4 }}>RISK-INCREASING FACTORS</h3>
+                            <h3 className="font-poppins-sub" style={{ fontSize: 18, color: "var(--text-primary)", marginBottom: 4 }}>RISK-INCREASING FACTORS</h3>
                             <p className="font-ui" style={{ fontSize: 14, color: "var(--text-secondary)", margin: 0 }}>Features that pushed the model toward a higher-risk prediction.</p>
                           </div>
                           {renderBlock(increasingFactors)}
@@ -687,7 +695,7 @@ export default function MerchantInvestigationPage({
                       {reducingFactors.length > 0 && (
                         <div>
                           <div style={{ marginBottom: 16 }}>
-                            <h3 className="font-display" style={{ fontSize: 18, fontWeight: 500, color: "var(--text-primary)", marginBottom: 4 }}>RISK-REDUCING FACTORS</h3>
+                            <h3 className="font-poppins-sub" style={{ fontSize: 18, color: "var(--text-primary)", marginBottom: 4 }}>RISK-REDUCING FACTORS</h3>
                             <p className="font-ui" style={{ fontSize: 14, color: "var(--text-secondary)", margin: 0 }}>Features that pushed the model toward a lower-risk prediction.</p>
                           </div>
                           {renderBlock(reducingFactors)}
@@ -726,7 +734,7 @@ export default function MerchantInvestigationPage({
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderBottom: "1px solid var(--border-default)", paddingBottom: 24, marginBottom: 32, flexWrap: "wrap", gap: 24 }}>
                 <div>
-                  <h2 className="font-display" style={{ fontSize: 24, fontWeight: 500, color: "var(--text-primary)", margin: "0 0 8px" }}>
+                  <h2 className="font-poppins-sub" style={{ fontSize: 24, color: "var(--text-primary)", margin: "0 0 8px" }}>
                     Observed Model Features
                   </h2>
                   <p className="font-ui" style={{ fontSize: 14, color: "var(--text-muted)", margin: "0 0 16px" }}>
@@ -839,6 +847,7 @@ export default function MerchantInvestigationPage({
             centralMerchantId={merchantId}
             centralNodeData={currentScore}
             networkData={network}
+            selectedTimestamp={selectedTimestamp}
             loading={loading}
           />
         )}

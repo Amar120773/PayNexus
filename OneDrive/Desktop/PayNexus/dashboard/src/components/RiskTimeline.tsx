@@ -110,7 +110,7 @@ export default function RiskTimeline({
         <div className="font-data" style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.1em", marginBottom: 12 }}>
           RISK EVOLUTION
         </div>
-        <h2 className="font-display" style={{ fontSize: 40, fontWeight: 500, color: "var(--text-primary)", margin: "0 0 8px", letterSpacing: "-0.02em" }}>
+        <h2 className="font-poppins-sub" style={{ fontSize: 40, color: "var(--text-primary)", margin: "0 0 8px" }}>
           Historical Trajectory
         </h2>
         <p className="font-ui" style={{ fontSize: 16, color: "var(--text-secondary)", margin: 0 }}>

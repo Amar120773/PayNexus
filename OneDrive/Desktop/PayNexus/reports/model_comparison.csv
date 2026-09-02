@@ -1,6 +1,0 @@
-model,feature_count,precision,recall,f1,roc_auc,pr_auc,false_positive_rate,network_detection_recall,merchants_detected_per_network_pct
-Model A: Behavior Only (Baseline),32,0.029,0.4,0.0541,0.6095,0.0408,0.3526,1.0,40.0
-Model B: Behavior + Raw Network,44,0.0348,0.8,0.0667,0.6653,0.0677,0.5842,1.0,80.0
-Model C: Behavior + Coordination,41,0.0,0.0,0.0,0.5263,0.0304,0.2053,0.0,0.0
-Model D: Behavior + Peer-Relative Deviation,38,0.0317,0.4,0.0588,0.5958,0.0395,0.3211,1.0,40.0
-Model E: Behavior + Network + Peer-Relative Deviation,50,0.03,0.6,0.0571,0.6758,0.1142,0.5105,1.0,60.0

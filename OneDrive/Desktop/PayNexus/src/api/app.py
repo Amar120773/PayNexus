@@ -1,33 +1,30 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from typing import Dict, Any
 
 from pathlib import Path
+import os
 
 from src.api.schemas import ScoreRequest, ScoreResult, NetworkScoreResult, ModelMetadataResponse, BlindSpotResponse, TimelineScoreRequest, MerchantMetadataResponse, ExplanationResponse
 from src.inference.scorer import InferenceEngine
 from src.inference.store import PointInTimeStore
 from src.monitoring.blind_spot import BlindSpotReport
 import pandas as pd
+from functools import lru_cache
 
 # Global instances
 engine: InferenceEngine = None
 store: PointInTimeStore = None
-merchant_metadata_df: pd.DataFrame = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global engine, store, merchant_metadata_df
+    global engine, store
     # Load ML models and metadata
     engine = InferenceEngine.get_instance()
     # Load data store
     store = PointInTimeStore.get_instance()
     
-    # Load operational metadata for dashboard safely
-    metadata_path = Path(store.data_dir) / "merchants.csv"
-    if metadata_path.exists():
-        merchant_metadata_df = pd.read_csv(metadata_path)
-        
     yield
     # Cleanup if necessary
 
@@ -38,11 +35,31 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[frontend_origin],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/health")
 def health_check() -> Dict[str, str]:
     if engine is None or store is None:
         raise HTTPException(status_code=503, detail="Service initializing")
     return {"status": "ok"}
+
+@lru_cache(maxsize=128)
+def _cached_network_subgraph(merchant_id: str, scoring_timestamp: str):
+    """Internal cache to prevent redundant Neo4j Cypher queries for the same point-in-time."""
+    return store.get_network_subgraph(merchant_id, scoring_timestamp)
+
+def get_defensive_subgraph(merchant_id: str, scoring_timestamp: str):
+    """Returns defensive copies of cached DataFrames to prevent inplace mutation leakage."""
+    m_df, tx_df, rels_df = _cached_network_subgraph(merchant_id, scoring_timestamp)
+    return m_df.copy(), tx_df.copy(), rels_df.copy()
 
 @app.get("/model/metadata", response_model=ModelMetadataResponse)
 def get_model_metadata():
@@ -62,7 +79,7 @@ def score_merchant_endpoint(req: ScoreRequest):
     """
     try:
         # 1. Fetch exact temporal subgraph for this merchant
-        m_df, tx_df, rels_df = store.get_network_subgraph(req.merchant_id, req.scoring_timestamp)
+        m_df, tx_df, rels_df = get_defensive_subgraph(req.merchant_id, req.scoring_timestamp)
         
         # 2. Check existence
         if m_df.empty:
@@ -93,7 +110,7 @@ def explain_merchant_endpoint(req: ScoreRequest):
     """
     try:
         # 1. Fetch exact temporal subgraph for this merchant
-        m_df, tx_df, rels_df = store.get_network_subgraph(req.merchant_id, req.scoring_timestamp)
+        m_df, tx_df, rels_df = get_defensive_subgraph(req.merchant_id, req.scoring_timestamp)
         
         # 2. Check existence
         if m_df.empty:
@@ -124,7 +141,7 @@ def score_network_endpoint(req: ScoreRequest):
     """
     try:
         # 1. Fetch exact temporal subgraph for this merchant's network
-        m_df, tx_df, rels_df = store.get_network_subgraph(req.merchant_id, req.scoring_timestamp)
+        m_df, tx_df, rels_df = get_defensive_subgraph(req.merchant_id, req.scoring_timestamp)
         
         # 2. Check existence
         if m_df.empty:
@@ -174,7 +191,7 @@ def score_merchant_timeline(req: TimelineScoreRequest):
     
     for ts in sorted_timestamps:
         try:
-            m_df, tx_df, rels_df = store.get_network_subgraph(req.merchant_id, ts)
+            m_df, tx_df, rels_df = get_defensive_subgraph(req.merchant_id, ts)
             
             res = engine.score_merchant(
                 merchant_id=req.merchant_id,
@@ -198,12 +215,9 @@ def score_merchant_timeline(req: TimelineScoreRequest):
 @app.get("/v1/merchant/{merchant_id}", response_model=MerchantMetadataResponse)
 def get_merchant_metadata(merchant_id: str):
     """
-    Return sanitized metadata for a merchant.
+    Return sanitized metadata for a merchant directly from Neo4j.
     """
-    if merchant_metadata_df is None:
-        raise HTTPException(status_code=503, detail="Metadata not loaded")
-        
-    m_info = merchant_metadata_df[merchant_metadata_df["merchant_id"] == merchant_id]
+    m_info = store.get_merchant(merchant_id)
     if m_info.empty:
         raise HTTPException(status_code=404, detail="Merchant not found")
         

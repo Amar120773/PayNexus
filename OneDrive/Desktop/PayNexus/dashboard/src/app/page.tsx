@@ -98,14 +98,14 @@ export default function HomePage() {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: 18 }}>
               <span className="font-data" style={{ fontSize: 10, fontWeight: 500, letterSpacing: "0.05em", color: "var(--text-disabled)" }}>
-                ONLINE · V2 MODEL · FROZEN
+                ONLINE · V2 MODEL
               </span>
             </div>
           </div>
           
           {/* Headline */}
-          <h1 className="font-display" style={{ fontSize: "clamp(32px, 4.5vw, 60px)", fontWeight: 500, color: "var(--text-primary)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 32 }}>
-            See Beyond The Transaction. <span style={{ color: "var(--brand-accent)", fontWeight: 600, fontStyle: "italic" }}>Investigate The Network Behind It.</span>
+          <h1 className="font-poppins-main" style={{ fontSize: "clamp(32px, 4.5vw, 60px)", color: "var(--text-primary)", lineHeight: 1.1, marginBottom: 32 }}>
+            See Beyond The Transaction. <span style={{ color: "var(--brand-accent)", fontStyle: "italic" }}>Investigate The Network Behind It.</span>
           </h1>
           
           <p className="font-ui" style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: 600, marginBottom: 48 }}>
@@ -208,7 +208,7 @@ export default function HomePage() {
                 <ShieldCheck size={16} strokeWidth={2.5} />
                 <span className="font-ui" style={{ fontSize: 13, fontWeight: 700 }}>Scoring Model</span>
               </div>
-              <span className="font-data system-badge" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", fontWeight: 800 }}>V2 / FROZEN</span>
+              <span className="font-data system-badge" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", fontWeight: 800 }}>V2 MODEL</span>
             </div>
             
             {/* Bottom Right: Status */}
@@ -228,7 +228,7 @@ export default function HomePage() {
 
       {/* ── BOTTOM SECTION: Investigation Cases ── */}
       <div>
-        <h2 className="font-display" style={{ fontSize: 32, fontWeight: 900, color: "var(--text-primary)", marginBottom: 32 }}>
+        <h2 className="font-poppins-sub" style={{ fontSize: 32, color: "var(--text-primary)", marginBottom: 32 }}>
           Active Investigation Cases
         </h2>
         
@@ -299,16 +299,17 @@ export default function HomePage() {
 
       {/* ── FOOTER CONTACT SECTION ── */}
       <footer style={{
-        background: "#061A26", // Deep teal from Razorpay palette
-        padding: "60px 32px",
+        background: "var(--bg-surface)", 
+        padding: "51px 32px",
         position: "relative",
         zIndex: 1,
         width: "100%",
         marginTop: 48,
-        overflow: "hidden"
+        overflow: "hidden",
+        borderTop: "1px solid var(--border-default)"
       }}>
-        {/* Full-width Neon Green Ribbon */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", background: "#00E570", padding: "12px 0", overflow: "hidden", display: "flex", alignItems: "center", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+        {/* Full-width Accent Ribbon */}
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", background: "var(--brand-accent)", padding: "12px 0", overflow: "hidden", display: "flex", alignItems: "center", borderBottom: "1px solid var(--border-default)" }}>
           <div className="animate-marquee" style={{ gap: 48 }}>
             {[
               "Next.js", "React", "TypeScript", "FastAPI", "Python", "XGBoost", "SHAP", "Pandas", "Lucide",
@@ -319,7 +320,7 @@ export default function HomePage() {
               <div key={i} className="font-data" style={{ 
                 fontSize: 13, 
                 fontWeight: 900, 
-                color: "#061A26", 
+                color: "var(--text-inverse)", 
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 display: "flex",
@@ -327,39 +328,39 @@ export default function HomePage() {
                 gap: 12,
                 whiteSpace: "nowrap"
               }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#061A26", opacity: 0.5, flexShrink: 0 }} />
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--text-inverse)", opacity: 0.5, flexShrink: 0 }} />
                 {tech}
               </div>
             ))}
           </div>
         </div>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "flex-start", marginTop: 40 }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "flex-start", marginTop: 34 }}>
           
-          <h2 className="font-display" style={{ fontSize: 46, fontWeight: 900, color: "#FFFFFF", marginBottom: 4, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          <h2 className="font-poppins-main" style={{ fontSize: 39, color: "var(--text-primary)", marginBottom: 4, lineHeight: 1.1 }}>
             PayNexus is built
           </h2>
-          <h2 className="font-display" style={{ fontSize: 46, fontWeight: 900, color: "#00E570", marginBottom: 32, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+          <h2 className="font-poppins-main" style={{ fontSize: 39, color: "var(--brand-accent)", marginBottom: 27, lineHeight: 1.1 }}>
             &lt;for investigators by investigators&gt;
           </h2>
           
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32, width: "100%" }}>
             
             {/* Contact Info */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#FFFFFF" }}>
-                <Activity size={24} />
-                <span className="font-ui" style={{ fontSize: 20, fontWeight: 700 }}>Connect with the Builder</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, color: "var(--text-primary)" }}>
+                <Activity size={20} />
+                <span className="font-ui" style={{ fontSize: 17, fontWeight: 700 }}>Connect with the Builder</span>
               </div>
-              <p className="font-ui" style={{ fontSize: 15, color: "#8E9EAA", lineHeight: 1.6, marginBottom: 8, maxWidth: 300 }}>
+              <p className="font-ui" style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: 7, maxWidth: 300 }}>
                 Reach out to discuss the underlying machine learning models, architecture design, or potential collaborations.
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <a href="mailto:gkmamarnath@gmail.com" style={{ color: "#FFFFFF", textDecoration: "none", fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>
-                  Connect via Mail <ArrowRight size={14} />
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <a href="mailto:gkmamarnath@gmail.com" style={{ color: "var(--text-primary)", textDecoration: "none", fontSize: 13, fontWeight: 700, display: "flex", alignItems: "center", gap: 7 }}>
+                  Connect via Mail <ArrowRight size={12} />
                 </a>
-                <a href="https://www.linkedin.com/in/amarnath-gowda" target="_blank" rel="noopener noreferrer" style={{ color: "#FFFFFF", textDecoration: "none", fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>
-                  Connect on LinkedIn <ArrowRight size={14} />
+                <a href="https://www.linkedin.com/in/amarnath-gowda" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-primary)", textDecoration: "none", fontSize: 13, fontWeight: 700, display: "flex", alignItems: "center", gap: 7 }}>
+                  Connect on LinkedIn <ArrowRight size={12} />
                 </a>
               </div>
             </div>
@@ -367,34 +368,40 @@ export default function HomePage() {
           </div>
           
           {/* WHY PAYNEXUS - Origin Story Link */}
-          <div style={{ marginTop: 40, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.1)", width: "100%", display: "flex", flexDirection: "column", gap: 12 }}>
-            <div className="font-data" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#00E570", textTransform: "uppercase" }}>
+          <div style={{ marginTop: 34, paddingTop: 27, borderTop: "1px solid var(--border-default)", width: "100%", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div className="font-data" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "var(--brand-accent)", textTransform: "uppercase" }}>
               WHY PAYNEXUS
             </div>
-            <p className="font-ui" style={{ fontSize: 16, color: "#8E9EAA", margin: 0 }}>
+            <p className="font-ui" style={{ fontSize: 14, color: "var(--text-secondary)", margin: 0 }}>
               How a fintech question became a network intelligence platform.
             </p>
-            <div style={{ marginTop: 8 }}>
+            <div style={{ marginTop: 7 }}>
               <button
                 onClick={() => router.push("/why-paynexus")}
                 style={{ 
                   background: "transparent", 
                   border: "none", 
                   padding: 0,
-                  color: "#FFFFFF", 
-                  fontSize: 14, 
+                  color: "var(--text-primary)", 
+                  fontSize: 12, 
                   fontWeight: 700, 
                   display: "flex", 
                   alignItems: "center", 
-                  gap: 8,
+                  gap: 7,
                   cursor: "pointer",
                   letterSpacing: "0.05em",
                   textTransform: "uppercase"
                 }}
                 className="font-data"
               >
-                READ THE STORY <ArrowRight size={14} />
+                READ THE STORY <ArrowRight size={12} />
               </button>
+            </div>
+          </div>
+
+          <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", marginTop: 54, paddingTop: 27, borderTop: "1px solid var(--border-subtle)" }}>
+            <div className="font-data" style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.05em" }}>
+              © {new Date().getFullYear()} PAYNEXUS INTELLIGENCE
             </div>
           </div>
         </div>
