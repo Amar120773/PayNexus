@@ -128,10 +128,26 @@ python src/demo_health_check.py
 # Run all 65 automated tests
 pytest tests/
 ```
+## 9. Challenges Faced & Solutions
+
+During the development of MuleHunter, several critical roadblocks were encountered and resolved:
+
+1. **Target Leakage in Static Graphs**
+   - *Challenge:* Our initial model (V1) achieved an unrealistic 100% recall. Debugging revealed a "leaky" static graph approach: the model was exposed to the entire connectivity graph during training, inadvertently learning the "future" topology of test-set networks.
+   - *Solution:* Engineered a strict "Point-in-Time" inference pipeline. We generate temporal snapshots, ensuring the graph state is computed using *only* historical data prior to the inference date, accurately reflecting operational reality.
+
+2. **Differentiating Legitimate Growth from Malicious Network Formation**
+   - *Challenge:* Fast-growing legitimate merchants often share infrastructure (e.g., using the same SaaS platforms or aggregators), which triggered false positives in purely structural models.
+   - *Solution:* Shifted from static analysis to "Temporal Network Evolution." We combined standard behavioral metrics with network evolution features (like 30-day degree velocity and shared infrastructure momentum). This successfully brought our False Positive Rate down to 1.5%.
+
+3. **Handling Type-D (Behavioral Transition) Mules**
+   - *Challenge:* The model struggled (65.6% recall) with syndicates that maintain stable infrastructure but gradually shift their transaction behavior, evading our 30-day delta windows.
+   - *Solution:* Acknowledged this limitation for automated detection and built manual network visualization directly into the Next.js investigator dashboard. This empowers human analysts to investigate the broader, long-term relationship graphs.
 
 ---
+---
 
-## 9. Project Status
+## 10. Project Status
 
 - [x] **V2 Dataset**: Temporal network evolution data generation completed.
 - [x] **Frozen Model**: Final LightGBM model trained and thresholds frozen.
