@@ -29,10 +29,11 @@ class ShapExplainer:
         
         # Workaround for XGBoost > 2.0 and SHAP base_score parsing bug
         original_float = builtins.float
-        def patched_float(x):
-            if isinstance(x, str) and x.startswith('[') and x.endswith(']'):
-                x = x[1:-1]
-            return original_float(x)
+        class patched_float(float):
+            def __new__(cls, x=0):
+                if isinstance(x, str) and x.startswith('[') and x.endswith(']'):
+                    x = x[1:-1]
+                return original_float(x)
         
         try:
             builtins.float = patched_float
